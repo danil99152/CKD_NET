@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <link href="{{ url_for('static', path='/styles.css/') }}" rel="stylesheet">
+    <title> ХБП.NET </title>
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    {% include 'analysis.html' %}
+{% endblock %}

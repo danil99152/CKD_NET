@@ -16,4 +16,6 @@ services_router.include_router(router=router)
 
 @services_router.get('/', response_class=HTMLResponse)
 async def index(request: Request):
-    return templates.TemplateResponse('index.html', {'request': request})
+    columns = list(settings.cat_columns.keys())
+    return templates.TemplateResponse('index.html', {'request': request,
+                                                     'columns': columns})
