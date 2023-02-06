@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from constants import Constants
+from config.constants import Constants
 
 
 class DatabaseConfiguration:

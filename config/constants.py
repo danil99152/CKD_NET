@@ -6,12 +6,11 @@ import pathlib
 
 
 class Constants:
+    def __init__(self):
+        # load_dotenv()
+        pass
+
     __slots__ = []
-
-    # def __init__(self):
-    # load_dotenv()
-
-    MODEL_PATH = str(pathlib.Path(__file__).parent.resolve()) + "/resources/catboost"
 
     @staticmethod
     def get_db_url():
