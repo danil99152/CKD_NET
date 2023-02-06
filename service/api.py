@@ -2,6 +2,7 @@ import logging
 from typing import List
 
 from service.model import ModelService
+from service.schemas.analysis import Analysis
 
 
 class ModelApi:
@@ -15,7 +16,7 @@ class ModelApi:
         result_bool_obj: str = 'pong'
         return result_bool_obj
 
-    async def analyse(self, data: dict) -> float | dict:
+    async def analyse(self, data: Analysis) -> float | dict:
         logging.debug(data)
         result = self.model.analyse(data)
         return result

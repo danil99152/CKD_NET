@@ -1,15 +1,17 @@
 import os
+import pathlib
 
-from dotenv import load_dotenv
+
+# from dotenv import load_dotenv
 
 
 class Constants:
     __slots__ = []
 
-    def __init__(self):
-        load_dotenv()
+    # def __init__(self):
+    # load_dotenv()
 
-    MODEL_PATH = "resources/Catboost_Model"
+    MODEL_PATH = str(pathlib.Path(__file__).parent.resolve()) + "/resources/catboost"
 
     @staticmethod
     def get_db_url():
