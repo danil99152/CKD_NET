@@ -2,8 +2,13 @@
 <legend>
     <h1>ХБП.NET</h1>
 </legend>
-    {% for i in range(columns) %}
-        {% set index = i %}
-        {% include 'field.html' %}
+    {% for key, value in columns.items() %}
+        {% set key = key %}
+        {% set value = value %}
+        {% if not value %}
+            {% include 'field.html' %}
+        {% else %}
+            {% include 'cat_field.html' %}
+        {% endif %}
     {% endfor %}
 </fieldset>
