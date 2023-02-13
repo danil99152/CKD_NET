@@ -15,17 +15,16 @@ class ModelService:
         self.model = CatBoostClassifier()
         self.model.load_model(path)
 
-    def analyse(self, data: Analysis) -> float | dict:
+    def analyse(self, data: dict) -> str | dict:
         logging.debug(data)
         try:
-            values = list(data.dict().values())
+            values = list(data.values())
             columns = list(settings.cat_columns.keys())
             cat_var = list(filter(lambda x: settings.cat_columns[x], settings.cat_columns))
             values = pd.DataFrame([values], columns=columns)
-            values[cat_var] = values[cat_var].astype(int).astype("category")
+            values[cat_var] = values[cat_var].astype("category")
             pred = self.model.predict_proba(values)[0][1]
             # self.repository.save(data)
-            return {"Вероятность болезни": f'{int(pred * 100)}%'}
-
+            return f'{int(pred * 100)}%'
         except Exception as e:
             return {"result": f'Exception as {e}'}

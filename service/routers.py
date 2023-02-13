@@ -2,9 +2,8 @@ from fastapi import APIRouter
 from starlette.responses import JSONResponse
 
 from service.api import ModelApi
-from service.schemas.analysis import Analysis
 
-router = APIRouter(prefix='/ckd', tags=['ckd'])
+router = APIRouter()
 api = ModelApi()
 
 
@@ -15,7 +14,7 @@ async def ping():
 
 
 @router.post('/get-result/', response_class=JSONResponse)
-async def get_result(data: Analysis) -> float | dict | str:
+async def get_result(data: dict) -> str | dict:
     try:
         response = await api.analyse(data)
         return response

@@ -16,7 +16,7 @@ class ModelApi:
         result_bool_obj: str = 'pong'
         return result_bool_obj
 
-    async def analyse(self, data: Analysis) -> float | dict:
+    async def analyse(self, data: dict) -> str | dict:
         logging.debug(data)
         result = self.model.analyse(data)
         return result
